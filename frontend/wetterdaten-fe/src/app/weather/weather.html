@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>Wetterdaten-App</h1>
+
+  <!-- Karte -->
+  <div id="map" class="map"></div>
+
+  <!-- Datumseingabe -->
+  <div class="inputs">
+    <label>Startdatum:
+      <input type="date" [(ngModel)]="startDate" />
+    </label>
+
+    <label>Enddatum:
+      <input type="date" [(ngModel)]="endDate" />
+    </label>
+
+    <button (click)="loadTemperatures()">Laden</button>
+  </div>
+
+  <!-- Tabelle -->
+  <table class="results" *ngIf="temperatures && temperatures.length > 0">
+    <thead>
+    <tr>
+      <th>Datum</th>
+      <th>Temperatur (°C)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of temperatures">
+      <td>{{ row.date }}</td>
+      <td>{{ row.temperature }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
